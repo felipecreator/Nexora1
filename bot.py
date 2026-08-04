@@ -3,10 +3,11 @@ from discord.ext import commands
 from discord.ui import Select, View, Button
 import asyncio
 from datetime import datetime
+import os
 
 # ==================== CONFIGURAÇÕES ====================
-TOKEN = "MTUzMzk5MzM2OTQzNTUwODg1Ng.GkWoou.Z12oJ7duO2pvlrCbwr_k-se8s5kO-ewWGdBQRs"
-CATEGORY_TICKETS = 1533999834003144846   # ID da categoria de tickets
+TOKEN = os.environ.get("TOKEN")
+CATEGORY_TICKETS = 1533999834003144846
 STAFF_ROLE_ID = 1530307314530390060
 
 COR_NEXORA = 0x5865F2
@@ -118,6 +119,6 @@ async def painel(ctx):
 @bot.event
 async def on_ready():
     print(f"✅ Bot Nexora online como {bot.user}")
-    bot.add_view(TicketPanel())  # Mantém o menu funcionando mesmo após reiniciar
+    bot.add_view(TicketPanel())
 
 bot.run(TOKEN)
